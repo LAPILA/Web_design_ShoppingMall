@@ -1,65 +1,132 @@
 <!DOCTYPE html>
-<html>
-	<head title="V-MALL - Virtual Shopping Mall">
-		<base href="C:\Users\상명대\Desktop\VMALL_Web">
-		<meta charset="utf-8">
-		<title>V-MALL</title>
-	</head>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-MALL - Virtual Shopping Mall</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 외부 CSS 파일로 스타일 관리하는 것을 권장합니다. -->
+    <style>
+        body {
+            background-color: #2E8B57;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
 
-	<body style="background-color: #2E8B57;">
-		<img src="https://cdn.mos.cms.futurecdn.net/kE36uHDn9axpY8W9wgg7xb-320-80.jpg" >
-		<h1 style="color:white;">
-			<strong>홈</strong>
-		</h1>
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
 
-		<p>
-			<h3 style="color:white;">
-				안녕하세요. 컴퓨터, 게임, 추가 장비들을 파는 쇼핑몰 V-MALL입니다.<br>
-			</h3>
-		</p>
-		<hr>
-		<div style="background-color:white; padding: 20px;">
-			<pre>
-			<h2>
-				<a href="C:\Users\상명대\Desktop\VMALL_Web">회원가입</a>
-				<a href="C:\Users\상명대\Desktop\VMALL_Web">로그인</a>
-			</h2>
-			</pre>
-		</div>
-		
-		<span style="color:white;">
-			
-		<ul>PC 주요부품
-			<img src="https://c.pxhere.com/photos/73/a8/photo-92934.jpg!d" width="750" height="500" >
-			<li>CPU</li>
-			<li>메인보드</li>
-			<li>메모리</li>
-			<li>그래픽카드</li>
-			<li>SSD</li>
-			<li>HDD</li>
-			<li>케이스</li>
-			<li>파워</li>
-			<li>쿨러/튜닝</li>
-			<li>키보드</li>
-			<li>마우스</li>
-			<li>ODD</li>
-		</ul>
-		<ul>모니터/사운드
-			<img src="https://i.namu.wiki/i/vB9tBiH5CbUQiGj6Ljp7Qn7yHim4_v8E1ZmS-VhqyxrzxYd949v6CT0jWGGrhvdc52KHCnVvC6VH_FVqy5oW1tl0ajClI8nl80PkEWRgo1hjR9tsNPy4MsbqmSdupu50PhpfY_0xgr6qrZja9f5Y3g.webp" width="850" height="500" >
-			<li>모니터</li>
-			<li>21인치 이하</li>
-			<li>22~25인치</li>
-			<li>27~29인치</li>
-			<li>30인치 이상</li>
-			<li>모니터 주변기기</li>
-			<li>스피커</li>
-			<li>사운드바</li>
-			<li>PC헤드셋</li>
-			<li>마이크</li>
-			<li>사운드카드</li>
-		</ul>
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: right;
+        }
 
-		</span>
-		<pre>
-	</body>
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #banner {
+            text-align: center;
+            padding: 40px;
+        }
+
+        #banner img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #categories {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .category {
+            text-align: center;
+        }
+
+        .category img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category ul li {
+            margin: 10px 0;
+        }
+
+        .category ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">홈</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li><a href="#">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="banner">
+        <img src="https://cdn.mos.cms.futurecdn.net/kE36uHDn9axpY8W9wgg7xb-320-80.jpg" alt="배너 이미지">
+        <h1>환영합니다. V-MALL - 가상 쇼핑몰</h1>
+        <p>컴퓨터, 게임, 추가 장비들을 최고의 품질로 제공합니다.</p>
+    </section>
+
+    <section id="categories">
+        <div class="category">
+            <img src="https://c.pxhere.com/photos/73/a8/photo-92934.jpg!d" alt="PC 주요부품 이미지" width="750" height="500">
+            <h3>PC 주요부품</h3>
+            <ul>
+                <li><a href="#">CPU</a></li>
+                <li><a href="#">메인보드</a></li>
+                <li><a href="#">메모리</a></li>
+                <!-- 다른 부품들도 이어서 나열하십시오 -->
+            </ul>
+        </div>
+        <div class="category">
+            <img src="https://i.namu.wiki/i/vB9tBiH5CbUQiGj6Ljp7Qn7yHim4_v8E1ZmS-VhqyxrzxYd949v6CT0jWGGrhvdc52KHCnVvC6VH_FVqy5oW1tl0ajClI8nl80PkEWRgo1hjR9tsNPy4MsbqmSdupu50PhpfY_0xgr6qrZja9f5Y3g.webp" alt="모니터/사운드 이미지" width="850" height="500">
+            <h3>모니터/사운드</h3>
+            <ul>
+                <li><a href="#">모니터</a></li>
+                <li><a href="#">21인치 이하</a></li>
+                <li><a href="#">22~25인치</a></li>
+                <!-- 다른 부품들도 이어서 나열하십시오 -->
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 V-MALL. All rights reserved.</p>
+    </footer>
+</body>
 </html>
