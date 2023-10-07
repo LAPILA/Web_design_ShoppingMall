@@ -1,0 +1,108 @@
+ @charset "utf-8";
+		body{
+			image-rendering: -moz-crisp-edges; /* firefox */
+			image-rendering: -o-crisp-edges; /* opera */
+			image-rendering: -webkit-optimize-contrast; /* chrome */
+			image-rendering: crisp-edges;
+ 			transform: translateZ(0);
+			backface-visibility: hidden;
+			background-image: url("space.jpg");
+			height: 100%;
+			background-position: center;
+  			background-repeat: no-repeat;
+  			background-size: cover;
+
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            margin-left: 40px;
+            margin-right: 40px;
+       	}
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: right;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        #banner {
+            text-align: center;
+            padding: 40px;
+        }
+
+        #banner img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #categories {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .category {
+            text-align: center;
+        }
+
+        .category img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .category ul {
+            list-style: none;
+            padding: 0;
+            font:italic bold coonsolas, sans-serif;
+        }
+
+        .category ul li {
+            margin: 10px 0;
+            font-family: sans-serif;
+            font-style: italic;
+
+        }
+
+        .category ul li:hover{
+            background: seagreen;
+        }
+        
+        .category ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+div {
+background : ghostwhite;
+padding : 20px;
+border : 5px double; color: indianred;
+margin : 30px;
+}
+

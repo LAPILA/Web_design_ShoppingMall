@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8"> 
 <title>로그인 폼</title></head>
-<body>
-<h3>로그인 폼</h3>
+<style>
+	.warning{color: red;}
+	body.main{background: aliceblue;}
+	#list {background: mistyrose;}
+</style>
+
+<body class="main">
+<h3 class="warning">로그인 폼</h3>
 <hr>
-<form name="fo" method="get">
-	<fieldset>
-		<legend>로그인</legend>
-			사용자 ID : <input type="text" 
-			size="15" value=""><br>
-			비밀 번호 : <input type="password" 
-			size="15" value="">
-			이메일 : <input type="email"><br>
-			홈페이지 : <input type="url"><br> 
-			전화번호 : <input type="tel">
-	</fieldset>
-	<small>질문 : Tel. 010-3#0#-1#7#</small>
+<form name="fo" method="get" id="list">
+사용자 ID : <input type="text" 
+size="15" value=""><br>
+비밀 번호 : <input type="password" 
+size="15" value="">
+</form>
 <input type="submit" 
 value="완료">
 </form>
