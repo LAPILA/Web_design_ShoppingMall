@@ -5,21 +5,24 @@
 <title>로그인 폼</title></head>
 <style>
 	.warning{color: red;}
-	body.main{background: aliceblue;}
-	#list {background: mistyrose;}
+	body.main{background: rgb(173, 196, 216);}
+	#list {background: rgb(231, 156, 147);}
 </style>
 
 <body class="main">
-<h3 class="warning">로그인 폼</h3>
-<hr>
-<form name="fo" method="get" id="list">
-사용자 ID : <input type="text" 
-size="15" value=""><br>
-비밀 번호 : <input type="password" 
-size="15" value="">
-</form>
-<input type="submit" 
-value="완료">
-</form>
+	<h3 class="warning">로그인 폼</h3>
+
+    <h2>로그인</h2>
+    <form id="loginForm">
+        아이디: <input type="text" id="id" placeholder="아이디" ><br>
+        비밀번호: <input type="password" id="password" placeholder="비밀번호"><br>
+        <button type="button" onclick="loginUser()">로그인</button>
+    </form>
+
+    <p id="status"></p>
+
+    <script src="user_info.js"></script>
+
+    <a href="userinfo.html">정보확인</a>
 </body>
 </html>
