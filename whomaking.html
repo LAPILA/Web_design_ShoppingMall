@@ -2,32 +2,65 @@
 <html>
 <head>
 <meta charset="utf-8"> 
-<title>유저 정보</title></head>
+<title>유저 정보</title>
+</head>
 <style>
-	.warning{color: rgb(120, 202, 112);}
-	body.main{background: rgb(196, 71, 196);}
-	#list {background: rgb(65, 43, 163);}
+    .warning{color: rgb(120, 202, 112);}
+    body.main{background: rgb(196, 71, 196);}
+    #list {background: rgb(65, 43, 163);}
 </style>
 
 <body>
+    <header style="background-color: #5c2c2c; color: white; padding: 10px 0;">
+        <nav>
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="display: inline; margin-right: 20px;"><a href="#" style="text-decoration: none; color: white;">홈</a></li>
+                <li style="display: inline; margin-right: 20px;"><a href="robot_check.html" style="text-decoration: none; color: white;">회원가입</a></li>
+                <li style="display: inline;"><a href="login.html" style="text-decoration: none; color: white;">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+    
     <h3>객체 생성 및 활용</h3>
     <hr>
     <script>
     let today = new Date(); 
-    document.write("현재 시간 : " + today.toLocaleString()
+    document.write("제작 정보 열람 시간 : " + today.toLocaleString()
     + "<br>");
 
     function Account(who,when,how,why,where,what){
-        this.who =who;
-        this.when =when;
+        this.who = who;
+        this.when = when;
         this.how = how;
         this.why = why;
         this.where = where;
         this.what = what;
     }
 
-    let Account = new Account("송태환",today.toLocaleString(),"html,css,js","homework","school","homepage")
+    let myAccount = new Account(
+        "202211083송태환",
+        today,
+        "HTML,CSS,JAVASCRIPT",
+        "SchoolWork",
+        "https://game.smu.ac.kr/game01/index.do", 
+        "쇼핑몰 제작하기"
+    );
+
+    // 문자열을 저장한 배열
+    let sentences = [
+        "제작자: " + myAccount.who,
+        "제작시간: " + myAccount.when,
+        "제작 Tool: " + myAccount.how,
+        "제작 목적: " + myAccount.why,
+        "만든 곳: " + myAccount.where,
+        "무엇을 만들었는가? : " + myAccount.what
+    ];
+
+    // 배열을 반복하여 출력
+    for (let i = 0; i < sentences.length; i++) {
+        document.write(sentences[i] + "<br>");
+    }
 
     </script>
-    </body>
+</body>
 </html>

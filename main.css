@@ -1,8 +1,8 @@
  @charset "utf-8";
 		body{
-			image-rendering: -moz-crisp-edges; /* firefox */
-			image-rendering: -o-crisp-edges; /* opera */
-			image-rendering: -webkit-optimize-contrast; /* chrome */
+			image-rendering: -moz-crisp-edges; 
+			image-rendering: -o-crisp-edges; 
+			image-rendering: -webkit-optimize-contrast; 
 			image-rendering: crisp-edges;
  			transform: translateZ(0);
 			backface-visibility: hidden;
@@ -19,7 +19,7 @@
             margin-right: 40px;
        	}
         header {
-            background-color: #333;
+            background-color: #5c2c2c;
             color: white;
             padding: 10px 0;
         }
@@ -45,6 +45,7 @@
         #banner {
             text-align: center;
             padding: 40px;
+            color: white;
         }
 
         #banner img {
@@ -89,7 +90,7 @@
             text-decoration: none;
             color: #333;
         }
-
+        
         footer {
             background-color: #333;
             color: white;
@@ -99,6 +100,7 @@
             margin-left: 0px;
             margin-right: 0px;
         }
+        
 div {
 background : ghostwhite;
 padding : 20px;

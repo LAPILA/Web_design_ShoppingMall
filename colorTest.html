@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>색깔 맞추기 게임</title>
+  <style>
+    body {
+      font-size: 36px;
+    }
+    #container {
+      text-align: center;
+      margin-top: 100px;
+    }
+    #timer {
+      font-size: 48px;
+      margin-bottom: 40px;
+    }
+    .colorBox {
+      width: 100px;
+      height: 100px;
+      display: inline-block;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    let score = 0;
+    let startTime;
+    let endTime;
+
+    function startGame() {
+      score = 0; // Reset the score
+      startTime = new Date();
+      changeColorAndBackground();
+      setInterval(showTime, 1000);
+    }
+
+    function showTime() {
+      let now = new Date();
+      let timeElapsed = Math.floor((now - startTime) / 1000);
+      document.getElementById("timer").innerHTML = "Time: " + timeElapsed + "s";
+    }
+
+    function changeColorAndBackground() {
+      let colors = ["red", "green", "blue", "yellow", "purple"];
+      let randomIndex = Math.floor(Math.random() * colors.length);
+      let span = document.getElementById("mySpan");
+      
+      span.style.color = colors[randomIndex];
+      span.style.backgroundColor = colors[(randomIndex + 1) % colors.length];
+
+      if (score >= 20 || score < 0) {
+        showResult();
+        return;
+      }
+    }
+
+    function checkColor(color) {
+      let span = document.getElementById("mySpan");
+      if (span.style.color === color) {
+        score++;
+      } else {
+        score--;
+        alert("틀렸습니다!");
+        if (score < 0) {
+          showResult();
+          return;
+        }
+      }
+      changeColorAndBackground();
+    }
+
+    function showResult() {
+      endTime = new Date();
+      let timeTaken = Math.floor((endTime - startTime) / 1000);
+      document.getElementById("score").style.display = "block";
+      document.getElementById("score").innerHTML = "Score: " + score;
+      alert("게임 끝! 시간: " + timeTaken + "s, 점수: " + score);
+    }
+
+    function resetGame() {
+      location.reload();
+    }
+  </script>
+</head>
+<body onload="startGame()">
+  <header style="background-color: #5c2c2c; color: white; padding: 10px 0;">
+    <nav>
+        <ul style="list-style-type: none; padding: 0;">
+            <li style="display: inline; margin-right: 20px;"><a href="#" style="text-decoration: none; color: white;">홈</a></li>
+            <li style="display: inline; margin-right: 20px;"><a href="robot_check.html" style="text-decoration: none; color: white;">회원가입</a></li>
+            <li style="display: inline;"><a href="login.html" style="text-decoration: none; color: white;">로그인</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+  <div id="container">
+    <div id="timer"></div>
+    <div id="score" style="display:none;"></div>
+    <p><span id="mySpan" style="padding: 10px;">글자색을 맞혀주세요!</span></p>
+    <div>
+      <div class="colorBox" style="background-color:red" onclick="checkColor('red')"></div>
+      <div class="colorBox" style="background-color:green" onclick="checkColor('green')"></div>
+      <div class="colorBox" style="background-color:blue" onclick="checkColor('blue')"></div>
+      <div class="colorBox" style="background-color:yellow" onclick="checkColor('yellow')"></div>
+      <div class="colorBox" style="background-color:purple" onclick="checkColor('purple')"></div>
+    </div>
+    <button onclick="resetGame()">다시하기</button>
+  </div>
+</body>
+</html>

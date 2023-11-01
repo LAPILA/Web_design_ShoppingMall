@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>직업 선택</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f5f5f5;
+      min-height: 100vh;
+    }
+    
+    header {
+      background-color: brown;
+      color: white;
+      text-align: left;
+    }
+
+    header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: right !important;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin-right: 20px;
+            float: right;
+        }
+
+    
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      text-align: right;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      padding: 15px;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2%;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      background-color: #ffffff;
+      padding: 2%;
+      width: 90%;
+      z-index: -1; /* Set lower z-index so it doesn't cover the header */
+    }
+    
+    #factionLogo {
+      position: absolute;
+      top: 2%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      width: 150px;
+      height: 150px;
+      border: 3px solid #000;
+      border-radius: 15px;
+      z-index: 1; /* Set higher z-index so it appears above other elements */
+    }
+    
+    #characterImage {
+      width: 800px;
+      height: 400px;
+      margin: 2%;
+      object-fit: contain;
+    }
+    
+    .stats {
+      border: 2px solid black;
+      padding: 1%;
+      margin-top: 3%;
+      width: 90%;
+      text-align: center;
+      border-radius: 15px;
+    }
+    
+    #characterForm {
+      margin-top: 2%;
+    }
+    
+  </style>
+</head>
+<body onload="createCharacter()">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="V-Mall_Web.html">홈</a></li>
+                <li><a href="robot_check.html">회원가입</a></li>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="container">
+    <img id="characterImage" src="" alt="캐릭터 이미지" onclick="checkPosition(event)">
+  <img id="factionLogo" src="" alt="분파 로고">
+</div>
+
+<div class="stats" id="stats"></div>
+
+<form id="characterForm">
+    이름: <input type="text" id="username"><br>
+    주 무기: 
+    <select id="weapon" onchange="createCharacter()">
+      <option value="sword.jpg">칼</option>
+      <option value="spear.jpg">창</option>
+      <option value="axe.jpg">도끼</option>
+      <option value="hammer.jpg">망치</option>
+      <option value="bow.jpg">활</option>
+      <option value="magic.jpg">마법</option>
+      <option value="faith.jpg">신앙</option>
+      <option value="ice.jpg">냉기</option>
+    </select><br>
+    분파: 
+    <select id="faction" onchange="createCharacter()">
+      <option value="wanderer.jpg">방랑자</option>
+      <option value="royalty.jpg">몰락한 왕족</option>
+      <option value="scholar.jpg">지식탐구자</option>
+      <option value="assassin.jpg">신살자</option>
+      <option value="psy.jpeg">사이비</option>
+    </select><br>
+    지역: 
+    <select id="region" onchange="createCharacter()">
+      <option value="erk">에르키난데</option>
+      <option value="naz">나제스탄</option>
+      <option value="kei">케이스타</option>
+      <option value="blk">블랙스펠</option>
+    </select><br>
+    <button type="button" onclick="createCharacter()">캐릭터 생성</button>
+  </form>
+
+  <div id="coordinateDisplay"></div>
+  <script>
+document.addEventListener('mousemove', function(e) {
+  let x = e.clientX;
+  let y = e.clientY;
+  
+  let coordinateDisplay = document.getElementById('coordinateDisplay');
+  if (!coordinateDisplay) {
+    coordinateDisplay = document.createElement('div');
+    coordinateDisplay.id = 'coordinateDisplay';
+    document.body.appendChild(coordinateDisplay);
+    coordinateDisplay.style.position = 'fixed';
+    coordinateDisplay.style.left = '10px';
+    coordinateDisplay.style.bottom = '10px';
+    coordinateDisplay.style.background = 'white';
+    coordinateDisplay.style.padding = '5px';
+    coordinateDisplay.style.border = '1px solid black';
+    coordinateDisplay.style.borderRadius = '5px';
+  }
+
+  coordinateDisplay.innerText = `Mouse Position: (${x}, ${y})`;
+});
+
+function checkPosition(event) {
+  const rect = document.getElementById('characterImage').getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  
+  if(x >= 0 && x <= 300 && y >= 0 && y <= 300) {
+    document.getElementById('factionLogo').src = 'hiddenFaction.jpg';
+    document.getElementById('characterImage').src = 'hiddenCharacter.jpg';
+    
+    let stats = {
+      체력: 50,
+      MP: 50,
+      물리공격력: 50,
+      마법공격력: 50,
+      방어력: 50,
+      스피드: 50,
+      물리면역: 50,
+      마법면역: 50
+    };
+
+    let statText = "스탯\n";
+    for (const [key, value] of Object.entries(stats)) {
+      statText += `${key}: ${value}\n`;
+    }
+    document.getElementById("stats").innerText = statText;
+  }
+}
+
+
+    function createCharacter() {
+ 
+      const username = document.getElementById("username").value;
+      const weapon = document.getElementById("weapon").value;
+      const faction = document.getElementById("faction").value;
+      const region = document.getElementById("region").value;
+  
+      document.getElementById('characterImage').src = weapon;
+      document.getElementById('factionLogo').src = faction;
+  
+      let stats = {
+        체력: 100,
+        MP: 100,
+        물리공격력: 10,
+        마법공격력: 10,
+        방어력: 10,
+        스피드: 10,
+        물리면역: 0,
+        마법면역: 0
+      };
+  
+      // 무기
+      if (weapon === 'sword') {
+        stats.물리공격력 += 30;
+        stats.물리면역 += 10;
+        stats.스피드 -= 5;
+        
+      } else if (weapon === 'spear') {
+        stats.물리공격력 += 15;
+        stats.스피드 += 5;
+        stats.물리면역 +=5;
+        stats.마법면역 += 5;
+      } else if (weapon === 'axe') {
+        stats.물리공격력 += 40;
+        stats.스피드 -= 5;
+        stats.물리면역 += 20;
+      } else if (weapon === 'hammer') {
+        stats.물리공격력 += 30;
+        stats.체력 += 20;
+        stats.스피드 -= 10;
+      } else if (weapon === 'bow') {
+        stats.물리공격력 += 15;
+        stats.마법공격력 += 5;
+        stats.스피드 += 10;
+        stats.물리면역 -20;
+        stats.마법멱역 -20;
+      } else if (weapon === 'magic') {
+        stats.MP += 30;
+        stats.마법공격력 += 25;
+        stats.마법면역 += 10;
+        stats.물리면역 -=10;
+      } else if (weapon === 'faith') {
+        stats.체력 += 20;
+        stats.마법공격력 += 15;
+        stats.마법면역 += 10;
+        stats.MP += 10;
+      }
+  
+      // 분파
+      if (faction === 'wanderer') {
+        stats.스피드 += 10;
+      } else if (faction === 'royalty') {
+        stats.체력 += 20;
+        stats.MP += 10;
+      } else if (faction === 'scholar') {
+        stats.MP += 20;
+        stats.마법공격력 += 10;
+      } else if (faction === 'assassin') {
+        stats.물리공격력 += 10;
+        stats.스피드 += 5;
+      } else if (faction === 'psy') {
+        stats.MP += 10;
+        stats.마법공격력 += 15;
+      }
+  
+      // 지역
+      if (region === 'erk') {
+        stats.체력 += 10;
+        stats.물리공격력 += 10;
+      } else if (region === 'naz') {
+        stats.물리공격력 += 5;
+        stats.스피드 += 5;
+      } else if (region === 'kei') {
+        stats.체력 += 10;
+        stats.방어력 += 10;
+      } else if (region === 'blk') {
+        stats.스피드 += 10;
+      }
+
+    
+    let statText = "스탯\n";
+    for (const [key, value] of Object.entries(stats)) {
+      statText += `${key}: ${value}\n`;
+    }
+    document.getElementById("stats").innerText = statText;
+    }
+
+    window.onload = createCharacter;
+  </script>
+  
+  
+  </body>
+  </html>
