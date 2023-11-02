@@ -14,16 +14,25 @@
     <header style="background-color: #5c2c2c; color: white; padding: 10px 0;">
         <nav>
             <ul style="list-style-type: none; padding: 0;">
-                <li style="display: inline; margin-right: 20px;"><a href="#" style="text-decoration: none; color: white;">홈</a></li>
+                <li style="display: inline; margin-right: 20px;"><a href="V-Mall_Web.html" style="text-decoration: none; color: white;">홈</a></li>
                 <li style="display: inline; margin-right: 20px;"><a href="robot_check.html" style="text-decoration: none; color: white;">회원가입</a></li>
                 <li style="display: inline;"><a href="login.html" style="text-decoration: none; color: white;">로그인</a></li>
             </ul>
         </nav>
     </header>
     
-    <h3>객체 생성 및 활용</h3>
+    
+    <h3>정보</h3>
     <hr>
-    <script>
+
+
+
+<script>
+
+function load(URL) {
+window.open(URL, "myWin", 
+"width=2160,height=3080");
+}
     let today = new Date(); 
     document.write("제작 정보 열람 시간 : " + today.toLocaleString()
     + "<br>");
@@ -36,6 +45,7 @@
         this.where = where;
         this.what = what;
     }
+
 
     let myAccount = new Account(
         "202211083송태환",
@@ -62,5 +72,9 @@
     }
 
     </script>
+
+<hr>
+<a href="javascript:load('https://www.smu.ac.kr/kor/index.do')">
+상명대 홈페이지</a><br>
 </body>
 </html>
