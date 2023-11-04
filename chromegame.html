@@ -1,6 +1,145 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
+<title>게임 허브</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 4px;
+    margin: 5px;
+    cursor: pointer;
+  }
+  .game-link img {
+    width: 100px;
+    height: auto;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+  }
+  .game-link {
+    display: block;
+    margin-bottom: 15px;
+  }
+</style>
 </head>
+<body>
+
+<h2>크롬 무료 게임 모음</h2>
+
+<!-- 게임 링크와 이미지 -->
+<div id="game-images">
+  <a class="game-link" href="javascript:openGame('https://www.trex-game.skipser.com/')">
+    <img src="trex.jpg" alt="공룡 게임">
+    공룡 게임 열기
+  </a>
+  <a class="game-link" href="javascript:openGame('https://www.google.com/logos/2010/pacman10-i.html')">
+    <img src="pacman.png" alt="팩맨 게임">
+    팩맨 게임 열기
+  </a>
+  <a class="game-link" href="javascript:openGame('https://www.google.com/search?q=google+snake')">
+    <img src="snake.png" alt="스네이크 게임">
+    스네이크 게임 열기
+  </a>
+</div>
+
+<!-- 윈도우 제어 버튼 -->
+<button class="button" onclick="openWindow('sample.html', 'myWin', 'toolbar=yes')">샘플 페이지 열기</button>
+<button class="button" onclick="openWindow('http://www.naver.com', 'myWin', 'left=10,top=10,width=300,height=400')">네이버 열기</button>
+<button class="button" onclick="printPage()">페이지 인쇄</button>
+<button class="button" onclick="closeWindow()">현재 윈도우 닫기</button>
+
+<script>
+// JavaScript 코드
+let myWindow;
+
+function openWindow(url, name, features) {
+  myWindow = window.open(url, name, features);
+}
+
+function printPage() {
+  window.print();
+}
+
+function closeWindow() {
+  if (myWindow) {
+    myWindow.close();
+  } else {
+    alert("열린 창이 없습니다.");
+  }
+}
+
+function openGame(url) {
+  window.open(url, '_blank', 'width=800,height=600');
+}
+// 타이머 함수 예시
+function setTimer() {
+  setTimeout(function() { alert('시간이 되었습니다!'); }, 5000);
+}
+
+function clearTimer(timerId) {
+  // 타이머 취소
+  clearTimeout(timerId);
+}
+
+var intervalId;
+function startInterval() {
+  intervalId = setInterval(function() { console.log('이 메시지는 2초마다 나타납니다.'); }, 2000);
+}
+
+function stopInterval() {
+  clearInterval(intervalId);
+}
+
+// 위치 및 크기 조절 예시
+function resizeWindow() {
+  myWindow.resizeTo(500, 500); // 윈도우 크기를 500x500으로 조절
+}
+
+function moveWindow() {
+  myWindow.moveTo(100, 100); // 윈도우를 (100, 100) 위치로 이동
+}
+
+// 인쇄 관련 이벤트 핸들러 예시
+window.onbeforeprint = function() {
+  console.log('인쇄 준비가 되었습니다.');
+};
+window.onafterprint = function() {
+  console.log('인쇄가 완료되었습니다.');
+};
+
+// location, navigator, history 객체 사용 예시
+function checkLocation() {
+  console.log('현재 URL:', window.location.href);
+}
+
+function checkNavigator() {
+  console.log('브라우저 정보:', window.navigator.userAgent);
+}
+
+function goBack() {
+  window.history.back(); // 뒤로 가기
+}
+
+function goForward() {
+  window.history.forward(); // 앞으로 가기
+}
+
+// 다른 함수들에 대한 코드를 여기에 추가하세요.
+</script>
+</body>
 </html>
